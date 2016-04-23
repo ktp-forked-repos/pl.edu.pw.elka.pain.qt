@@ -9,7 +9,7 @@ class SolarSystemInitializer : public QObject
     Q_OBJECT
 public:
     explicit SolarSystemInitializer(QObject *parent = 0);
-    SolarSystem getSolarSystem();
+    SolarSystem* getSolarSystem();
 
 signals:
 

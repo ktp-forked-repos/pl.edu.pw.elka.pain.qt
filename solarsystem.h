@@ -17,11 +17,11 @@ public:
     /**
      * @brief GravityF Force of gravity described in m^3 / (kg * s^2)
      */
-    unsigned int GravityF;
+    double GravityF;
     /**
      * @brief timeStep amount of time used for single step of simulation described in seconds
      */
-    unsigned int timeStep;
+    double timeStep;
     /**
      * @brief activePlanet planet selected to launch rocket from
      */
@@ -37,7 +37,7 @@ public:
      * @param v initial velocity of the rocket
      * @param angle angle from which rocket should be launched from planet
      */
-    void launchRocket(unsigned int v, unsigned int angle);
+    void launchRocket(double v, double angle);
 signals:
 
 public slots:

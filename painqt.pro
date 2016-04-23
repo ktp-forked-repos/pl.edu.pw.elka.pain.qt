@@ -25,6 +25,7 @@ HEADERS  += mainwindow.h \
     solarsystem.h \
     solarsysteminitializer.h \
     rocket.h \
-    planet.h
+    planet.h \
+    constants.h
 
 FORMS    += mainwindow.ui

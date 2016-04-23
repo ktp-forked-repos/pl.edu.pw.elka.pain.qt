@@ -7,30 +7,29 @@ class SolarObject : public QObject
 {
     Q_OBJECT
 public:
-    explicit SolarObject(unsigned int mass, QObject *parent = 0);
-    explicit SolarObject(unsigned int mass, unsigned int x, unsigned int y,
-                         unsigned int vx, unsigned int vy, QObject *parent = 0);
+    explicit SolarObject(double mass, QObject *parent = 0);
 
     /**
-     * @brief mass mass of an object in kilograms
+     * @brief mass mass of an object in kilograms multiplied by earth's mass
+     * which is equal to 6.046 * 10^24kg
      */
-    const unsigned int mass;
+    const double mass;
     /**
      * @brief x position of the object in horizontal axis in kilometers
      */
-    unsigned int x;
+    double x;
     /**
      * @brief y position of the object in vertical axis in kilometers
      */
-    unsigned int y;
+    double y;
     /**
      * @brief vx speed of the object in horizontal axis in kilometers per second
      */
-    unsigned int vx;
+    double vx;
     /**
      * @brief vy speed of the object in verical axis in kilometers per second
      */
-    unsigned int vy;
+    double vy;
 signals:
 
 public slots:

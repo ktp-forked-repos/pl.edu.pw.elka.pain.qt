@@ -17,23 +17,3 @@ void MainWindow::on_btnLaunch_clicked()
 {
     throw "not implemented";
 }
-
-void MainWindow::on_sldTimeSpeed_valueChanged(int value)
-{
-    throw "not implemented";
-}
-
-void MainWindow::on_sldGravityForce_valueChanged(int value)
-{
-    throw "not implemented";
-}
-
-void MainWindow::on_sldRocketVelocity_valueChanged(int value)
-{
-    throw "not implemented";
-}
-
-void MainWindow::on_sldRocketAngle_valueChanged(int value)
-{
-    throw "not implemented";
-}
