@@ -2,12 +2,13 @@
 #define SOLAROBJECT_H
 
 #include <QObject>
+#include <QGraphicsItem>
 
-class SolarObject : public QObject
+class SolarObject : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    explicit SolarObject(double mass, QObject *parent = 0);
+    explicit SolarObject(double mass, QGraphicsItem *parent = 0);
 
     /**
      * @brief mass mass of an object in kilograms multiplied by earth's mass
@@ -30,6 +31,14 @@ public:
      * @brief vy speed of the object in verical axis in kilometers per second
      */
     double vy;
+
+    QRectF boundingRect() const Q_DECL_OVERRIDE;
+    QPainterPath shape() const Q_DECL_OVERRIDE;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
+
+protected:
+    void advance(int step) Q_DECL_OVERRIDE;
+
 signals:
 
 public slots:

@@ -20,7 +20,7 @@ public:
      * @param parent
      */
     explicit Planet(double radius, double mass, double distanceFromSun,
-                    double v, double angleToSun, QString name, QObject *parent = 0);
+                    double v, double angleToSun, QString name, QGraphicsItem *parent = 0);
 
     /**
      * @brief radius radius of the planet in kilometers

@@ -2,6 +2,7 @@
 #define SOLARSYSTEMINITIALIZER_H
 
 #include <QObject>
+#include <QGraphicsView>
 #include "solarsystem.h"
 
 class SolarSystemInitializer : public QObject

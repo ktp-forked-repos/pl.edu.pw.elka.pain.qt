@@ -2,7 +2,7 @@
 #include<math.h>
 
 Planet::Planet(double radius, double mass, double distanceFromSun,
-               double v, double angleToSun, QString name, QObject *parent)
+               double v, double angleToSun, QString name, QGraphicsItem *parent)
     : SolarObject(mass, parent), radius(radius), name(name)
 {
     this->x = distanceFromSun * cos(angleToSun);

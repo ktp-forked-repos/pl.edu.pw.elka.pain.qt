@@ -10,7 +10,7 @@ class Rocket : public SolarObject
     Q_OBJECT
 public:
     explicit Rocket(Planet* startPlanet, double v,
-                    double angle, QObject *parent = 0);
+                    double angle, QGraphicsItem *parent = 0);
 
 signals:
 
