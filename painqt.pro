@@ -13,8 +13,18 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    solarobject.cpp \
+    solarsystem.cpp \
+    solarsysteminitializer.cpp \
+    rocket.cpp \
+    planet.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    solarobject.h \
+    solarsystem.h \
+    solarsysteminitializer.h \
+    rocket.h \
+    planet.h
 
 FORMS    += mainwindow.ui
