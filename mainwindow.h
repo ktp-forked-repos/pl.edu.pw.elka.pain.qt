@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include"solarsystem.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +21,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    SolarSystem* solarSystem;
+    QGraphicsScene* scene;
 };
 
 #endif // MAINWINDOW_H

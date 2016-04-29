@@ -5,7 +5,7 @@
 #include "solarobject.h"
 #include "planet.h"
 
-class SolarSystem : public QObject
+class SolarSystem : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
@@ -28,16 +28,18 @@ public:
     Planet* activePlanet;
 
     /**
-     * @brief step method used for moving all objects in system by one step
-     */
-    void step();
-
-    /**
      * @brief launchRocket method that launches the rocket from current active planet
      * @param v initial velocity of the rocket
      * @param angle angle from which rocket should be launched from planet
      */
     void launchRocket(double v, double angle);
+
+    QRectF boundingRect() const Q_DECL_OVERRIDE;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
+
+protected:
+    void advance(int step) Q_DECL_OVERRIDE;
+
 signals:
 
 public slots:
