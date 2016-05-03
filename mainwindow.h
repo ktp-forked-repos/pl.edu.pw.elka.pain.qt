@@ -19,6 +19,10 @@ public:
 private slots:
     void on_btnLaunch_clicked();
 
+    void on_sldTimeSpeed_valueChanged(int value);
+
+    void on_sldGravityForce_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
     SolarSystem* solarSystem;

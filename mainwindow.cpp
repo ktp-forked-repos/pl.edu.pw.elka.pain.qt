@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "solarsystem.h"
 #include "solarsysteminitializer.h"
+#include "constants.h"
 #include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -30,5 +31,18 @@ void MainWindow::on_btnLaunch_clicked()
 {
     double v = ui->sldRocketVelocity->value();
     double angle = ui->sldRocketAngle->value();
-    solarSystem->launchRocket(v, angle);
+    double vDefault = 50;
+    solarSystem->launchRocket(v / vDefault, angle / 100 * PI * 2);
+}
+
+void MainWindow::on_sldTimeSpeed_valueChanged(int value)
+{
+    static const double defaultValue = 20;
+    solarSystem->setTimeStep((double)value / defaultValue);
+}
+
+void MainWindow::on_sldGravityForce_valueChanged(int value)
+{
+    static const double defaultValue = 30;
+    solarSystem->setGravity((double)value / defaultValue);
 }

@@ -13,8 +13,21 @@ Planet::Planet(double radius, double mass, double distanceFromSun,
     this->vy = v * -sin(angleToSun);
 }
 
+QRectF Planet::boundingRect() const Q_DECL_OVERRIDE
+{
+    return QRectF(-80, -80, 160, 160);
+}
 
 void Planet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE
 {
-    SolarObject::paint(painter, option, widget);
+    static QColor color(0, 0, 0);
+    painter->setBrush(color);
+    painter->drawEllipse(boundingRect());
+}
+
+QPainterPath Planet::shape() const Q_DECL_OVERRIDE
+{
+    QPainterPath path;
+    path.addEllipse(boundingRect());
+    return path;
 }

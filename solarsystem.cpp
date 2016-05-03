@@ -10,10 +10,12 @@ SolarSystem::SolarSystem(QObject *parent) : QObject(parent)
 }
 
 
-void SolarSystem::launchRocket(double v, double angle)
+void SolarSystem::launchRocket(double vPercent, double angle)
 {
-    Rocket* r = new Rocket(activePlanet, v, angle, this);
+    static double defaultRocketVelocity = 4000;
+    Rocket* r = new Rocket(activePlanet, defaultRocketVelocity * vPercent, angle, this);
     solarObjects.push_back(r);
+    r->setPos(r->x, r->y);
 }
 
 
@@ -103,4 +105,14 @@ double SolarSystem::getAngleBetween(SolarObject* s1, SolarObject* s2)
     double x = s2->x - s1->x;
     double y = s2->y - s1->y;
     return atan2(x, y);
+}
+
+void SolarSystem::setTimeStep(double percent)
+{
+    timeStep = timeStepBase * percent;
+}
+
+void SolarSystem::setGravity(double percent)
+{
+    GravityC = GravityCBase * percent;
 }

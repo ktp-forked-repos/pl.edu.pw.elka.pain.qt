@@ -15,24 +15,30 @@ public:
      */
     std::list<SolarObject*> solarObjects;
     /**
-     * @brief GravityC Gravity constant described in m^3 / (kg * s^2)
-     */
-    double GravityC;
-    /**
-     * @brief timeStep amount of time used for single step of simulation described in seconds
-     */
-    double timeStep;
-    /**
      * @brief activePlanet planet selected to launch rocket from
      */
     Planet* activePlanet;
 
     /**
      * @brief launchRocket method that launches the rocket from current active planet
-     * @param v initial velocity of the rocket
+     * @param vPercent initial velocity of the rocket in percentage to default v
      * @param angle angle from which rocket should be launched from planet
      */
-    void launchRocket(double v, double angle);
+    void launchRocket(double vPercent, double angle);
+
+    /**
+     * @brief setTimeStep sets value of time step
+     * @param percent percent of default value to be set.
+     * when percent == 0.1 it is set to 10% etc
+     */
+    void setTimeStep(double percent);
+
+    /**
+     * @brief setGravity sets value of gravity
+     * @param percent percent of default value to be set.
+     * when percent == 0.1 it is set to 10% etc
+     */
+    void setGravity(double percent);
 
     QRectF boundingRect() const Q_DECL_OVERRIDE;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
@@ -52,7 +58,15 @@ private:
     /**
      * @brief timeStepBase base amount of time used for single step of simulation in seconds
      */
-    const double timeStepBase = 3600;
+    const double timeStepBase = 10000;
+    /**
+     * @brief GravityC Gravity constant described in m^3 / (kg * s^2)
+     */
+    double GravityC;
+    /**
+     * @brief timeStep amount of time used for single step of simulation described in seconds
+     */
+    double timeStep;
 
     void setObjectsPos();
     void setObjectsVelocity();
