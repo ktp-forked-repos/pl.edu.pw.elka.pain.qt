@@ -30,6 +30,9 @@ public:
      * @brief name name of the planet
      */
     const QString name;
+protected:
+
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
 
 signals:
 

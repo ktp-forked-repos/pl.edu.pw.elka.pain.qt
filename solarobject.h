@@ -16,11 +16,11 @@ public:
      */
     const double mass;
     /**
-     * @brief x position of the object in horizontal axis in kilometers
+     * @brief x position of the object in horizontal axis in kilometers multipled by 10^6
      */
     double x;
     /**
-     * @brief y position of the object in vertical axis in kilometers
+     * @brief y position of the object in vertical axis in kilometers multipled by 10^6
      */
     double y;
     /**
@@ -31,6 +31,13 @@ public:
      * @brief vy speed of the object in verical axis in kilometers per second
      */
     double vy;
+
+    /**
+     * @brief changeVelocity changes object velocity
+     * @param dv total change in velocity (km/s)
+     * @param angle angle relative to velocity change
+     */
+    void changeVelocity(double dv, double angle);
 
     QRectF boundingRect() const Q_DECL_OVERRIDE;
     QPainterPath shape() const Q_DECL_OVERRIDE;

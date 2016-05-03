@@ -15,9 +15,9 @@ public:
      */
     std::list<SolarObject*> solarObjects;
     /**
-     * @brief GravityF Force of gravity described in m^3 / (kg * s^2)
+     * @brief GravityC Gravity constant described in m^3 / (kg * s^2)
      */
-    double GravityF;
+    double GravityC;
     /**
      * @brief timeStep amount of time used for single step of simulation described in seconds
      */
@@ -43,6 +43,38 @@ protected:
 signals:
 
 public slots:
+
+private:
+    /**
+     * @brief GravityCBase real gravity constant described in m^3 / (kg * s^2)
+     */
+    const double GravityCBase = 6.67408F;
+    /**
+     * @brief timeStepBase base amount of time used for single step of simulation in seconds
+     */
+    const double timeStepBase = 3600;
+
+    void setObjectsPos();
+    void setObjectsVelocity();
+    std::list<std::pair<SolarObject*, SolarObject*> > getSolarObjectsPairs();
+
+    /**
+     * @brief getDistanceBetween calculates distance between objects
+     * @param s1 first solar object
+     * @param s2 second solar object
+     * @return distance between two objects in kilometers
+     * multipled by 10^6
+     */
+    double getDistanceBetween(SolarObject* s1, SolarObject* s2);
+
+    /**
+     * @brief getAngleBetween calculates relative angle between two
+     * solar objects, assuming that first object is in the center
+     * @param s1 first object relative to which angle is calculated
+     * @param s2 second object
+     * @return angle relative to first object in radians
+     */
+    double getAngleBetween(SolarObject* s1, SolarObject* s2);
 };
 
 #endif // SOLARSYSTEM_H
