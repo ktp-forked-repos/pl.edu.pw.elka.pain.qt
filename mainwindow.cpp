@@ -13,9 +13,9 @@ MainWindow::MainWindow(QWidget *parent) :
     solarSystem = SolarSystemInitializer().getSolarSystem();
     scene = new QGraphicsScene(ui->graphicsView);
     ui->graphicsView->setScene(scene);
+    scene->setSceneRect(solarSystem->boundingRect());
     scene->addItem(solarSystem);
-    QRectF x = scene->sceneRect();
-    ui->graphicsView->fitInView(QRectF(-200, -200, 400, 400), Qt::KeepAspectRatio);
+    ui->graphicsView->fitInView(solarSystem, Qt::KeepAspectRatio);
 
     QTimer* timer = new QTimer(ui->graphicsView);
     QObject::connect(timer, SIGNAL(timeout()), scene, SLOT(advance()));
@@ -45,4 +45,15 @@ void MainWindow::on_sldGravityForce_valueChanged(int value)
 {
     static const double defaultValue = 30;
     solarSystem->setGravity((double)value / defaultValue);
+}
+
+void MainWindow::resizeEvent(QResizeEvent * event)
+{
+    QMainWindow::resizeEvent(event);
+    fitInView();
+}
+
+void MainWindow::fitInView()
+{
+    ui->graphicsView->fitInView(solarSystem, Qt::KeepAspectRatio);
 }

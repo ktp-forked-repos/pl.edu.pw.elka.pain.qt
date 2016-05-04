@@ -21,7 +21,7 @@ SolarSystem* SolarSystemInitializer::getSolarSystem()
     //    Planet* neptune = new Planet(24.764, 17.2, 4484.350139, 5.43, 0.4 * PI, "Neptune", system);
 
         Planet* sun = new Planet(695700, 330000, 0, 0, 0, "Sun", system);
-        Planet* mercury = new Planet(2.440, 0.06, 57.149340, 2551, 0.33 * PI, "Mercury", system);
+    //    Planet* mercury = new Planet(2.440, 0.06, 57.149340, 2551, 0.33 * PI, "Mercury", system);
             Planet* venus = new Planet(6.052, 0.82, 108.939123, 1865, 0.25 * PI, "Venus", system);
             Planet* earth = new Planet(6.378, 1, 149.879224, 1600, 1.5 * PI, "Earth", system);
             Planet* mars = new Planet(3.396, 0.11, 227.339977, 1279, 1.75*PI, "Mars", system);

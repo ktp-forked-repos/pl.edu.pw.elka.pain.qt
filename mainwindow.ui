@@ -21,10 +21,10 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
       <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
+       <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
       <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustToContents</enum>
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
       </property>
       <property name="backgroundBrush">
        <brush brushstyle="SolidPattern">

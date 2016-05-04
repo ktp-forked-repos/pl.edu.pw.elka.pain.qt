@@ -15,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void fitInView();
 
 private slots:
     void on_btnLaunch_clicked();
@@ -27,6 +28,7 @@ private:
     Ui::MainWindow *ui;
     SolarSystem* solarSystem;
     QGraphicsScene* scene;
+    void resizeEvent(QResizeEvent * event);
 };
 
 #endif // MAINWINDOW_H

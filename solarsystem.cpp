@@ -2,6 +2,7 @@
 #include "rocket.h"
 #include<math.h>
 #include"constants.h"
+#include<QKeyEvent>
 
 SolarSystem::SolarSystem(QObject *parent) : QObject(parent)
 {
@@ -12,7 +13,7 @@ SolarSystem::SolarSystem(QObject *parent) : QObject(parent)
 
 void SolarSystem::launchRocket(double vPercent, double angle)
 {
-    static double defaultRocketVelocity = 4000;
+    static double defaultRocketVelocity = 2200;
     Rocket* r = new Rocket(activePlanet, defaultRocketVelocity * vPercent, angle, this);
     solarObjects.push_back(r);
     r->setPos(r->x, r->y);
@@ -21,7 +22,7 @@ void SolarSystem::launchRocket(double vPercent, double angle)
 
 QRectF SolarSystem::boundingRect() const Q_DECL_OVERRIDE
 {
-    return QRectF(-3000, -3000, 6000, 6000);
+    return QRectF(-5000, -5000, 10000, 10000);
 }
 
 void SolarSystem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE
