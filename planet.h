@@ -11,7 +11,7 @@ class Planet : public SolarObject
 public:
     /**
      * @brief Planet default constructor for the Planet
-     * @param radius radius of the planet described in kilometers
+     * @param radius radius of the planet described in kilometers * 10^6
      * @param mass mass multipled by earths mass = 6.046 * 10^24kg
      * @param distanceFromSun distance from sun in kilometers multiplied by 10^6
      * @param v velocity of the planet described in kilometers per second
@@ -23,7 +23,7 @@ public:
                     double v, double angleToSun, QString name, QGraphicsItem *parent = 0);
 
     /**
-     * @brief radius radius of the planet in kilometers
+     * @brief radius radius of the planet in kilometers * 10^6
      */
     const double radius;
     /**
@@ -39,6 +39,8 @@ protected:
 signals:
 
 public slots:
+private:
+    QPainterPath planetShape;
 };
 
 #endif // PLANET_H

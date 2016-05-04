@@ -31,6 +31,10 @@ public:
      * @brief vy speed of the object in verical axis in kilometers per second
      */
     double vy;
+    /**
+     * @brief isDestroyed true if object should be deleted from scene
+     */
+    bool isDestroyed;
 
     /**
      * @brief changeVelocity changes object velocity
@@ -45,6 +49,7 @@ protected:
 signals:
 
 public slots:
+private:
 };
 
 #endif // SOLAROBJECT_H

@@ -27,6 +27,7 @@ private:
      * which is equal to 6.046 * 10^24kg
      */
     static const double ROCKET_MASS = 1.0e-18;
+    QPainterPath path;
 };
 
 #endif // ROCKET_H

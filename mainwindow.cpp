@@ -16,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
     scene->setSceneRect(solarSystem->boundingRect());
     scene->addItem(solarSystem);
     ui->graphicsView->fitInView(solarSystem, Qt::KeepAspectRatio);
-
     QTimer* timer = new QTimer(ui->graphicsView);
     QObject::connect(timer, SIGNAL(timeout()), scene, SLOT(advance()));
     timer->start(1000 / 33);

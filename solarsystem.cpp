@@ -8,12 +8,13 @@ SolarSystem::SolarSystem(QObject *parent) : QObject(parent)
 {
     GravityC = GravityCBase;
     timeStep = timeStepBase;
+    setObjectsPos();
 }
 
 
 void SolarSystem::launchRocket(double vPercent, double angle)
 {
-    static double defaultRocketVelocity = 2200;
+    static double defaultRocketVelocity = 5000;
     Rocket* r = new Rocket(activePlanet, defaultRocketVelocity * vPercent, angle, this);
     solarObjects.push_back(r);
     r->setPos(r->x, r->y);
@@ -38,7 +39,28 @@ void SolarSystem::advance(int step) Q_DECL_OVERRIDE
     }
     else
     {
+        removeDestroyedObjects();
         setObjectsVelocity();
+    }
+}
+
+void SolarSystem::removeDestroyedObjects()
+{
+    for(std::list<SolarObject*>::iterator it = solarObjects.begin();
+        it != solarObjects.end();)
+    {
+        SolarObject* s = *it;
+        if(s->isDestroyed)
+        {
+            std::list<SolarObject*>::iterator temp = it;
+            it++;
+            solarObjects.erase(temp);
+            delete *temp;
+        }
+        else
+        {
+            it++;
+        }
     }
 }
 

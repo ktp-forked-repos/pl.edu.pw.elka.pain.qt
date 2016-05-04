@@ -89,6 +89,8 @@ private:
      * @return angle relative to first object in radians
      */
     double getAngleBetween(SolarObject* s1, SolarObject* s2);
+
+    void removeDestroyedObjects();
 };
 
 #endif // SOLARSYSTEM_H

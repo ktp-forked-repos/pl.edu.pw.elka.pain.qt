@@ -3,6 +3,7 @@
 #include<QPainter>
 #include"constants.h"
 
+
 Planet::Planet(double radius, double mass, double distanceFromSun,
                double v, double angleToSun, QString name, QGraphicsItem *parent)
     : SolarObject(mass, parent), radius(radius), name(name)
@@ -11,6 +12,7 @@ Planet::Planet(double radius, double mass, double distanceFromSun,
     this->y = distanceFromSun * cos(angleToSun);
     this->vx = v * cos(angleToSun);
     this->vy = v * -sin(angleToSun);
+    planetShape.addEllipse(-radius, -radius, 2*radius, 2*radius);
 }
 
 QRectF Planet::boundingRect() const Q_DECL_OVERRIDE
@@ -27,7 +29,5 @@ void Planet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
 QPainterPath Planet::shape() const Q_DECL_OVERRIDE
 {
-    QPainterPath path;
-    path.addEllipse(boundingRect());
-    return path;
+    return planetShape;
 }
