@@ -13,6 +13,7 @@ Planet::Planet(double radius, double mass, double distanceFromSun,
     this->vx = v * cos(angleToSun);
     this->vy = v * -sin(angleToSun);
     planetShape.addEllipse(-radius, -radius, 2*radius, 2*radius);
+    deactivate();
 }
 
 QRectF Planet::boundingRect() const Q_DECL_OVERRIDE
@@ -22,7 +23,6 @@ QRectF Planet::boundingRect() const Q_DECL_OVERRIDE
 
 void Planet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE
 {
-    static QColor color(0, 0, 0);
     painter->setBrush(color);
     painter->drawEllipse(boundingRect());
 }
@@ -30,4 +30,14 @@ void Planet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 QPainterPath Planet::shape() const Q_DECL_OVERRIDE
 {
     return planetShape;
+}
+
+void Planet::deactivate()
+{
+    color = QColor(0,0,0);
+}
+
+void Planet::activate()
+{
+    color = QColor(0, 0, 255);
 }

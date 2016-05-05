@@ -15,13 +15,15 @@ void SolarObject::changeVelocity(double dv, double angle)
 
 void SolarObject::advance(int step)
 {
-    static int temp = 200;
-    if(temp-- > 0) return;
     if(step == 1)
     {
-        return;
+        this->setPos(x, y);
+        checkCollisionsAndDestroy();
     }
+}
 
+void SolarObject::checkCollisionsAndDestroy()
+{
     QList<QGraphicsItem*> list = this->collidingItems();
     for(QList<QGraphicsItem*>::iterator it = list.begin();
         it != list.end(); ++it)

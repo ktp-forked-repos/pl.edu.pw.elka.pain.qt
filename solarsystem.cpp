@@ -73,7 +73,6 @@ void SolarSystem::setObjectsPos()
         SolarObject* s = *it;
         s->x += (s->vx * timeStep / 1000000);
         s->y += (s->vy * timeStep / 1000000);
-        s->setPos(s->x, s->y);
     }
 }
 

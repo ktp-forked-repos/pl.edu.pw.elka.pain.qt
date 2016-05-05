@@ -30,6 +30,9 @@ public:
      * @brief name name of the planet
      */
     const QString name;
+
+    void activate();
+    void deactivate();
 protected:
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
@@ -41,6 +44,7 @@ signals:
 public slots:
 private:
     QPainterPath planetShape;
+    QColor color;
 };
 
 #endif // PLANET_H

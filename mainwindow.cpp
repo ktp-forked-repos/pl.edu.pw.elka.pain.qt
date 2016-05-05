@@ -28,9 +28,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnLaunch_clicked()
 {
+    static const double vDefault = 50;
     double v = ui->sldRocketVelocity->value();
     double angle = ui->sldRocketAngle->value();
-    double vDefault = 50;
     solarSystem->launchRocket(v / vDefault, angle / 100 * PI * 2);
 }
 

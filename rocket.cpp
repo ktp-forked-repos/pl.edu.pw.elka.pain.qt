@@ -11,7 +11,7 @@ Rocket::Rocket(Planet* startPlanet, double v,
     vx = v * cos(angle);
     vy = v * sin(angle);
 
-    double size = 10e-4;
+    static const double size = 10e-4;
     path.addEllipse(-size, -size, size*2, size*2);
 }
 
@@ -22,7 +22,7 @@ QRectF Rocket::boundingRect() const Q_DECL_OVERRIDE
 
 void Rocket::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE
 {
-    static QColor color(255, 0, 0);
+    static const QColor color(255, 0, 0);
     painter->setBrush(color);
     painter->drawEllipse(boundingRect());
 }

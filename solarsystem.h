@@ -68,8 +68,24 @@ private:
      */
     double timeStep;
 
+    /**
+     * @brief setObjectsPos
+     * Calculates objects position
+     */
     void setObjectsPos();
+
+    /**
+     * @brief setObjectsVelocity
+     * Calculates objects velocity
+     */
     void setObjectsVelocity();
+
+    /**
+     * @brief getSolarObjectsPairs
+     * Returns distinct pairs of all solar objects so that gravity
+     * force can be calculated between all of them
+     * @return
+     */
     std::list<std::pair<SolarObject*, SolarObject*> > getSolarObjectsPairs();
 
     /**
@@ -90,6 +106,10 @@ private:
      */
     double getAngleBetween(SolarObject* s1, SolarObject* s2);
 
+    /**
+     * @brief removeDestroyedObjects
+     * Removed destroyed objects from scene
+     */
     void removeDestroyedObjects();
 };
 

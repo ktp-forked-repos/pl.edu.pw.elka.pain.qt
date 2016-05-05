@@ -10,6 +10,7 @@ SolarSystemInitializer::SolarSystemInitializer(QObject *parent) : QObject(parent
 SolarSystem* SolarSystemInitializer::getSolarSystem()
 {
     SolarSystem* system = new SolarSystem();
+    //here velocities are correct but for some reason are not working properly.
 //    Planet* sun = new Planet(695700, 330000, 0, 0, 0, "Sun", system);
     //    Planet* mercury = new Planet(2.440, 0.06, 46.149340, 47.87, 0.33 * PI, "Mercury", system);
     //    Planet* venus = new Planet(6.052, 0.82, 108.939123, 35.02, 0.25 * PI, "Venus", system);
@@ -20,15 +21,15 @@ SolarSystem* SolarSystemInitializer::getSolarSystem()
     //    Planet* uranus = new Planet(25.559, 14.6, 2998.745626, 6.81, 0.8 * PI, "Uranus", system);
     //    Planet* neptune = new Planet(24.764, 17.2, 4484.350139, 5.43, 0.4 * PI, "Neptune", system);
 
-        Planet* sun = new Planet(0.695700, 330000, 0, 0, 0, "Sun", system);
+        Planet* sun = new Planet(69.5700, 330000, 0, 0, 0, "Sun", system);
         //Planet* mercury = new Planet(2.440, 0.06, 57.149340, 2500, 0.33 * PI, "Mercury", system);
-            Planet* venus = new Planet(0.006052, 0.82, 108.939123, 1865, 0.25 * PI, "Venus", system);
-            Planet* earth = new Planet(0.006378, 1, 149.879224, 1600, 1.5 * PI, "Earth", system);
-            Planet* mars = new Planet(0.003396, 0.11, 227.339977, 1279, 1.75*PI, "Mars", system);
-            Planet* jupiter = new Planet(0.071492, 317.8, 778.009880, 697, 1.4 * PI, "Jupiter", system);
-            Planet* saturn = new Planet(0.060268, 95.2, 1426.283824, 516, 1.66 * PI, "Saturn", system);
-            Planet* uranus = new Planet(0.025559, 14.6, 2870.745626, 363, 0.8 * PI, "Uranus", system);
-            Planet* neptune = new Planet(0.024764, 17.2, 4498.350139, 289, 0.4 * PI, "Neptune", system);
+            Planet* venus = new Planet(0.6052, 0.82, 108.939123, 1865, 0.25 * PI, "Venus", system);
+            Planet* earth = new Planet(0.6378, 1, 149.879224, 1600, 1.5 * PI, "Earth", system);
+            Planet* mars = new Planet(0.3396, 0.11, 227.339977, 1279, 1.75*PI, "Mars", system);
+            Planet* jupiter = new Planet(7.1492, 317.8, 778.009880, 697, 1.4 * PI, "Jupiter", system);
+            Planet* saturn = new Planet(6.0268, 95.2, 1426.283824, 516, 1.66 * PI, "Saturn", system);
+            Planet* uranus = new Planet(2.5559, 14.6, 2870.745626, 363, 0.8 * PI, "Uranus", system);
+            Planet* neptune = new Planet(2.4764, 17.2, 4498.350139, 289, 0.4 * PI, "Neptune", system);
 
     system->solarObjects.push_back(sun);
     //system->solarObjects.push_back(mercury);
@@ -40,5 +41,6 @@ SolarSystem* SolarSystemInitializer::getSolarSystem()
     system->solarObjects.push_back(uranus);
     system->solarObjects.push_back(neptune);
     system->activePlanet = earth;
+    earth->activate();
     return system;
 }
