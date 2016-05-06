@@ -40,6 +40,12 @@ public:
      */
     void setGravity(double percent);
 
+    /**
+     * @brief setNextActive  sets active planet to be the next planet
+     * @return true if there are planets available, false otherwise
+     */
+    bool setNextActive();
+
     QRectF boundingRect() const Q_DECL_OVERRIDE;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
 
@@ -111,6 +117,8 @@ private:
      * Removed destroyed objects from scene
      */
     void removeDestroyedObjects();
+
+    Planet* getFirstPlanetAfter(std::list<SolarObject*>::iterator it);
 };
 
 #endif // SOLARSYSTEM_H

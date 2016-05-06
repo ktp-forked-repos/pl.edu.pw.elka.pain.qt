@@ -1,5 +1,6 @@
 #include "solarsystem.h"
 #include "rocket.h"
+#include "algorithm"
 #include<math.h>
 #include"constants.h"
 #include<QKeyEvent>
@@ -14,7 +15,7 @@ SolarSystem::SolarSystem(QObject *parent) : QObject(parent)
 
 void SolarSystem::launchRocket(double vPercent, double angle)
 {
-    static double defaultRocketVelocity = 5000;
+    static double defaultRocketVelocity = 2500;
     Rocket* r = new Rocket(activePlanet, defaultRocketVelocity * vPercent, angle, this);
     solarObjects.push_back(r);
     r->setPos(r->x, r->y);
@@ -137,4 +138,48 @@ void SolarSystem::setTimeStep(double percent)
 void SolarSystem::setGravity(double percent)
 {
     GravityC = GravityCBase * percent;
+}
+
+bool SolarSystem::setNextActive()
+{
+    if(activePlanet != NULL)
+    {
+        activePlanet->deactivate();
+    }
+    std::list<SolarObject*>::iterator it = std::find(solarObjects.begin(), solarObjects.end(), activePlanet);
+    activePlanet = getFirstPlanetAfter(it);
+    if(activePlanet != NULL)
+    {
+        activePlanet->activate();
+        return true;
+    }
+    return false;
+}
+
+Planet* SolarSystem::getFirstPlanetAfter(std::list<SolarObject*>::iterator it)
+{
+    std::list<SolarObject*>::iterator given = it;
+    if(it != solarObjects.end())
+    {
+        it++;
+    }
+    while(it != solarObjects.end())
+    {
+        Planet* planet = dynamic_cast<Planet*>(*it);
+        if(planet != NULL && planet->name != "Sun")
+        {
+            return planet;
+        }
+        it++;
+    }
+    it = solarObjects.begin();
+    while(it != given)
+    {
+        Planet* planet = dynamic_cast<Planet*>(*it);
+        if(planet != NULL && planet->name != "Sun")
+        {
+            return planet;
+        }
+        it++;
+    }
 }

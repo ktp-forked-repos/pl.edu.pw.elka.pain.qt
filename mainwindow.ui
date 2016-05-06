@@ -52,14 +52,25 @@
     <item>
      <layout class="QHBoxLayout" name="layoutControlPanel">
       <item>
-       <widget class="QPushButton" name="btnLaunch">
-        <property name="text">
-         <string>Launch</string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="buttons">
+        <item>
+         <widget class="QPushButton" name="btnLaunch">
+          <property name="text">
+           <string>Launch</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnNext">
+          <property name="text">
+           <string>Next</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <layout class="QGridLayout" name="gridSliders">
+       <layout class="QGridLayout" name="sliders">
         <item row="1" column="0">
          <widget class="QSlider" name="sldTimeSpeed">
           <property name="value">

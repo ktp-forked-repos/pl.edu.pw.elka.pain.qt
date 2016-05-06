@@ -45,6 +45,8 @@ private slots:
      */
     void on_sldGravityForce_valueChanged(int value);
 
+    void on_btnNext_clicked();
+
 private:
     Ui::MainWindow *ui;
     SolarSystem* solarSystem;

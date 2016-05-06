@@ -34,6 +34,15 @@ void MainWindow::on_btnLaunch_clicked()
     solarSystem->launchRocket(v / vDefault, angle / 100 * PI * 2);
 }
 
+void MainWindow::on_btnNext_clicked()
+{
+    bool found = solarSystem->setNextActive();
+    if(!found)
+    {
+        ui->btnNext->setEnabled(false);
+    }
+}
+
 void MainWindow::on_sldTimeSpeed_valueChanged(int value)
 {
     static const double defaultValue = 20;
