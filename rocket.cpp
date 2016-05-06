@@ -6,8 +6,8 @@
 Rocket::Rocket(Planet* startPlanet, double v,
                double angle, QGraphicsItem *parent) : SolarObject(ROCKET_MASS, parent)
 {
-    x = startPlanet->x + startPlanet->radius + 1 * cos(angle);
-    y = startPlanet->y + startPlanet->radius + 1 * sin(angle);
+    x = startPlanet->x + startPlanet->radius * 4 * cos(angle);
+    y = startPlanet->y + startPlanet->radius * 4 * sin(angle);
     vx = v * cos(angle);
     vy = v * sin(angle);
 

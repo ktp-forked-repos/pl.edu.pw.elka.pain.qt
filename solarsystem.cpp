@@ -13,12 +13,17 @@ SolarSystem::SolarSystem(QObject *parent) : QObject(parent)
 }
 
 
-void SolarSystem::launchRocket(double vPercent, double angle)
+bool SolarSystem::launchRocket(double vPercent, double angle)
 {
+    if(activePlanet == NULL)
+    {
+        return false;
+    }
     static double defaultRocketVelocity = 2500;
     Rocket* r = new Rocket(activePlanet, defaultRocketVelocity * vPercent, angle, this);
     solarObjects.push_back(r);
     r->setPos(r->x, r->y);
+    return true;
 }
 
 
@@ -34,14 +39,11 @@ void SolarSystem::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
 void SolarSystem::advance(int step) Q_DECL_OVERRIDE
 {
-    if(step == 1)
-    {
-        setObjectsPos();
-    }
-    else
+    if(step == 0)
     {
         removeDestroyedObjects();
         setObjectsVelocity();
+        setObjectsPos();
     }
 }
 
@@ -162,15 +164,15 @@ Planet* SolarSystem::getFirstPlanetAfter(std::list<SolarObject*>::iterator it)
     if(it != solarObjects.end())
     {
         it++;
-    }
-    while(it != solarObjects.end())
-    {
-        Planet* planet = dynamic_cast<Planet*>(*it);
-        if(planet != NULL && planet->name != "Sun")
+        while(it != solarObjects.end())
         {
-            return planet;
+            Planet* planet = dynamic_cast<Planet*>(*it);
+            if(planet != NULL && planet->name != "Sun")
+            {
+                return planet;
+            }
+            it++;
         }
-        it++;
     }
     it = solarObjects.begin();
     while(it != given)
@@ -182,4 +184,5 @@ Planet* SolarSystem::getFirstPlanetAfter(std::list<SolarObject*>::iterator it)
         }
         it++;
     }
+    return NULL;
 }

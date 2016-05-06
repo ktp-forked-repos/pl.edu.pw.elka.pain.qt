@@ -47,6 +47,8 @@ private slots:
 
     void on_btnNext_clicked();
 
+    void gameOver();
+
 private:
     Ui::MainWindow *ui;
     SolarSystem* solarSystem;

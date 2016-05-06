@@ -23,8 +23,9 @@ public:
      * @brief launchRocket method that launches the rocket from current active planet
      * @param vPercent initial velocity of the rocket in percentage to default v
      * @param angle angle from which rocket should be launched from planet
+     * @return false if rocket can't be launch, true otherwise.
      */
-    void launchRocket(double vPercent, double angle);
+    bool launchRocket(double vPercent, double angle);
 
     /**
      * @brief setTimeStep sets value of time step
@@ -118,6 +119,11 @@ private:
      */
     void removeDestroyedObjects();
 
+    /**
+     * @brief getFirstPlanetAfter returns next planet in solar system
+     * @param it planet as a reference to which next planet will be returned
+     * @return next planet in the solar system
+     */
     Planet* getFirstPlanetAfter(std::list<SolarObject*>::iterator it);
 };
 

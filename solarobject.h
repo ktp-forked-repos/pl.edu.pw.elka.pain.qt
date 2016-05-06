@@ -54,7 +54,7 @@ private:
      * Checks if item is colliding with any other item and if it is is
      * destroys object with lesser mass
      */
-    void checkCollisionsAndDestroy();
+    void destroyIfNeeded();
 };
 
 #endif // SOLAROBJECT_H

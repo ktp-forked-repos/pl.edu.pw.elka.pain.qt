@@ -31,15 +31,18 @@ void MainWindow::on_btnLaunch_clicked()
     static const double vDefault = 50;
     double v = ui->sldRocketVelocity->value();
     double angle = ui->sldRocketAngle->value();
-    solarSystem->launchRocket(v / vDefault, angle / 100 * PI * 2);
+    bool success = solarSystem->launchRocket(v / vDefault, angle / 100 * PI * 2);
+    if(!success)
+    {
+        gameOver();
+    }
 }
 
 void MainWindow::on_btnNext_clicked()
 {
-    bool found = solarSystem->setNextActive();
-    if(!found)
+    if(!solarSystem->setNextActive())
     {
-        ui->btnNext->setEnabled(false);
+        gameOver();
     }
 }
 
@@ -64,4 +67,14 @@ void MainWindow::resizeEvent(QResizeEvent * event)
 void MainWindow::fitInView()
 {
     ui->graphicsView->fitInView(solarSystem, Qt::KeepAspectRatio);
+}
+
+void MainWindow::gameOver()
+{
+    ui->btnNext->setEnabled(false);
+    ui->btnLaunch->setEnabled(false);
+    ui->sldRocketAngle->setEnabled(false);
+    ui->sldGravityForce->setEnabled(false);
+    ui->sldRocketVelocity->setEnabled(false);
+    ui->sldTimeSpeed->setEnabled(false);
 }
